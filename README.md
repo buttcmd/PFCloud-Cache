@@ -1,8 +1,7 @@
 PFCloud-Cache
 =============
 
-**NOTE: This repo is no longer maintained. We ended up abandoning Parse because of performance and security issues.**
-
+Following the work by updatezen change the TMCache framework to EGOCache
 
 This category on **PFCloud** adds an additional **cachePolicy** parameter to Parse's existing asynchronous (background) cloud function call methods. It exactly replicates the [existing caching behavior] used with the **PFQuery** object. It creates a record in the cache for every unique combination of function name + parameters.
 
@@ -54,15 +53,11 @@ The trick is to create a unique key in the cache for every unique combination of
 
 ##Installation
 
-Easiest installation is using CocoaPods to resolve all dependencies:
-
-```pod 'PFCloud+Cache', '~> 0.0.2'```
-
-Otherwise you must manually copy the .h and .m files from this repo as well as from [NSData-MD5] and [TMCache]. Obviously you must also have the [Parse SDK] installed. Enjoy!
+You must manually copy the .h and .m files from this repo as well as from [NSData-MD5] and [EGOCache]. Obviously you must also have the [Parse SDK] installed. Enjoy!
 
 [existing caching behavior]:https://parse.com/docs/ios_guide#queries-caching/iOS
 [NSCoding]:https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSCoding_Protocol/Reference/Reference.html
 [Parse+NSCoding]:https://github.com/martinrybak/Parse-NSCoding/
 [NSData-MD5]:https://github.com/siuying/NSData-MD5
-[TMCache]:https://github.com/tumblr/TMCache
+[EGOCache]:https://github.com/buttcmd/EGOCache
 [Parse SDK]:https://parse.com/downloads/ios/parse-library/latest

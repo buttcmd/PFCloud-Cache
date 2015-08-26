@@ -7,7 +7,7 @@
 //
 
 #import "PFCloud+Cache.h"
-#import "TMCache.h"
+#import "EGOCache.h"
 #import "NSData+MD5Digest.h"
 
 @implementation PFCloud (Cache)
@@ -98,23 +98,24 @@
 
 + (void)clearCachedResult:(NSString*)function withParameters:(NSDictionary*)parameters
 {
-	[[TMDiskCache sharedCache] removeObjectForKey:[self cacheKey:function params:parameters]];
+	[[EGOCache globalCache] removeCacheForKey:[self cacheKey:function params:parameters]];
 }
 
 + (void)clearAllCachedResults
 {
-	[[TMDiskCache sharedCache] removeAllObjects];
+	[[EGOCache globalCache] clearCache];
 }
 
 + (BOOL)hasCachedResult:(NSString*)function params:(NSDictionary*)parameters
 {
-	id cachedResult = [self fetchFromCache:function params:parameters];
-	return cachedResult != nil;
+//	id cachedResult = [self fetchFromCache:function params:parameters];
+//	return cachedResult != nil;
+    return [[EGOCache globalCache] hasCacheForKey:[self cacheKey:function params:parameters]];
 }
 
 + (void)setMaxCacheAge:(NSTimeInterval)maxCacheAge
 {
-	[TMDiskCache sharedCache].ageLimit = maxCacheAge;
+	[EGOCache globalCache].defaultTimeoutInterval = maxCacheAge;
 }
 
 #pragma mark - Private
@@ -140,12 +141,12 @@
 
 + (void)saveToCache:(id)object function:(NSString*)function params:(NSDictionary*)params
 {
-	[[TMDiskCache sharedCache] setObject:object forKey:[self cacheKey:function params:params]];
+	[[EGOCache globalCache] setObject:object forKey:[self cacheKey:function params:params]];
 }
 
 + (id)fetchFromCache:(NSString*)function params:(NSDictionary*)params
 {
-	return [[TMDiskCache sharedCache] objectForKey:[self cacheKey:function params:params]];
+	return [[EGOCache globalCache] objectForKey:[self cacheKey:function params:params]];
 }
 
 + (NSError*)noCacheError
