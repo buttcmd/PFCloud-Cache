@@ -42,10 +42,10 @@ Both the contents of the **parameters** dictionary and the **cloud function retu
 Cached objects are persisted to disk in the following folder on the user's device:
 
 ```
-~/Library/Caches/com.tumblr.TMDiskCache/TMDiskCacheShared/
+~/Library/Caches/APPBundle/AppCache/
 ```
 
-Cached objects persist between app restarts until they expire. By default they never expire. To impose a maximum cache age use the ```setMaxCacheAge:``` method. The cache can also be explicity cleared for a particular cloud function call using the ```clearCachedResult:``` method, or for all calls using the ```clearAllCachedResults``` method.
+Cached objects persist between app restarts until they expire. By default they expirein a minute. To impose a different cache age use the ```setMaxCacheAge:``` method. The cache can also be explicity cleared for a particular cloud function call using the ```clearCachedResult:``` method, or for all calls using the ```clearAllCachedResults``` method.
 
 ##How it Works
 
